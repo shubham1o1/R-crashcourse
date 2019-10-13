@@ -269,7 +269,7 @@
 
 ### 9.  20:17 Relational Operators 
 
-    ```r
+    ```bash
 
     > iAmTrue = TRUE
     > iAmFalse = FALSE
@@ -435,7 +435,7 @@
 
     ```bash
 
-    
+
 
     ```
 
