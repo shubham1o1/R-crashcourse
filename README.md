@@ -267,7 +267,7 @@
 
     ```
 
-### 9.  20:17 Relational Operators 
+### 9.  20:17 Relational Operators
 
     ```bash
 
