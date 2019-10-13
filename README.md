@@ -60,7 +60,7 @@
 
     ```
 - Select the code and click on run. 
-- We haven't specified the path to the data file. When we run the above script a browse window appears in our working directory, where we can specify the data file. After running the script playerrbi_avg.png file is created in the working directory. 
+- We haven't specified the path to the data file. When we run the above script a browse window dialogue box appears in our working directory. Here we can specify the file that contains data. After running the script playerrbi_avg.png file is created in the working directory. 
 
 ### 4.  09:57 Assignment 
 
@@ -445,70 +445,813 @@
 
     ```bash
 
+    > # Create customer data frame
+    > custData = data.frame(name=c("Tom", "Sally", "Sue"),
+    +                       age=c(43, 28, 35),
+    +                       stringsAsFactors=F)
+    > 
+    > custData
+    name age
+    1   Tom  43
+    2 Sally  28
+    3   Sue  35
+    > 
 
+
+    > # Get data in row 1 column 1
+    > custData[1,1]
+    [1] "Tom"
+    > 
+
+
+    > # Get all data in 1st row
+    > custData[1,1:2]
+    name age
+    1  Tom  43
+    > 
+
+
+    > # Get all ages
+    > custData[1:3, 2]
+    [1] 43 28 35
+    > 
+
+
+    > # Get dimensions
+    > dim(custData)
+    [1] 3 2
+    > 
+
+
+    > # Add another record
+    > recordMark = data.frame(name="Mark", age=33)
+    > custData = rbind(custData, recordMark)
+    > custData
+    name age
+    1   Tom  43
+    2 Sally  28
+    3   Sue  35
+    4  Mark  33
+    > 
+
+
+    > # Add a column representing debt
+    > debt = c(0, 25.50, 36, 48.19)
+    > custData = cbind(custData, debt)
+    > custData
+    name age  debt
+    1   Tom  43  0.00
+    2 Sally  28 25.50
+    3   Sue  35 36.00
+    4  Mark  33 48.19
+    > 
+
+
+    > # Check if money is owed
+    > owesMoney = custData[custData$debt > 0,]
+    > owesMoney
+    name age  debt
+    2 Sally  28 25.50
+    3   Sue  35 36.00
+    4  Mark  33 48.19
 
     ```
 
 ### 16. 36:00 Repeat 
 
+- Repeat until a condition is met
 
+    ```r
+
+    num = 1
+    repeat{
+        print(num)
+        num = num + 1
+        if(num > 5){
+            # Jumps out of loop
+            break
+        }
+    }
+
+    ```
+
+    ```bash
+    # o/p in console:
+        [1] 1
+        [1] 2
+        [1] 3
+        [1] 4
+        [1] 5
+
+    ```
 
 ### 17. 36:43 While 
 
+- Repeat while condition is true
+
+    ```r
+
+    while(num > 0){
+        num = num - 1 # num is initially 5
+
+        # next skips the rest of the loop and jumps back to the top
+        if(num %% 2 == 0){
+            next
+        }
+        print(num)
+    }
+
+    ```
+
+    ```bash
+    # o/p in console:
+
+        [1] 5
+        [1] 3
+        [1] 1
+
+    ```
 
 
 ### 18. 37:54 For 
 
+- For can be used to cycle through a vector or do the same thing a specific number of times
 
+    ```r
+
+    oneTo5 = 1:5
+    for (i in oneTo5){
+    print(i)
+    }
+
+    ```
+
+    ```bash
+
+    #o/p:
+
+        [1] 1
+        [1] 2
+        [1] 3
+        [1] 4
+        [1] 5
+
+    ```
 
 ### 19. 38:43 Matrices 
 
+- A Matrix stores values in rows and columns
 
+    ```bash
+
+    > # Create a Matrix with a single column
+    > matrix1 = matrix(data=c(1,2,3,4))
+    > matrix1
+        [,1]
+    [1,]    1
+    [2,]    2
+    [3,]    3
+    [4,]    4
+
+
+    > # Create a matrix with defined rows and columns
+    > matrix2 = matrix(data=c(1,2,3,4), nrow=2, ncol=2)
+    > matrix2
+        [,1] [,2]
+    [1,]    1    3
+    [2,]    2    4
+
+
+    > # You can also fill by row (You can use T or TRUE)
+    > matrix3 = matrix(data=c(1,2,3,4), nrow=2, ncol=2, byrow=T)
+    > matrix3
+        [,1] [,2]
+    [1,]    1    2
+    [2,]    3    4
+
+
+    > # Get a Matrix dimension
+    > dim(matrix3)
+    [1] 2 2
+
+    > # A value at row, column
+    > matrix3[1,2]
+    [1] 2
+
+    > # Get a whole row
+    > matrix3[1,]
+    [1] 1 2
+
+    > # Get a whole column
+    > matrix3[,2]
+    [1] 2 4
+
+    > # Combine vectors to make a Matrix
+    > matrix4 = rbind(1:3, 4:6, 7:9) # 1 through 3, 4 through 6, 7 through 9
+    > matrix4
+        [,1] [,2] [,3]
+    [1,]    1    2    3
+    [2,]    4    5    6
+    [3,]    7    8    9
+
+    > # Get 2nd and 3rd row
+    > matrix4[2:3,] 
+        [,1] [,2] [,3]
+    [1,]    4    5    6
+    [2,]    7    8    9
+
+    > # Get 2nd and 3rd row by ommitting the 1st
+    > matrix4[-1,]
+        [,1] [,2] [,3]
+    [1,]    4    5    6
+    [2,]    7    8    9
+    > 
+
+    > # Change the first value
+    > matrix4[1,1] = 0
+    > matrix4
+        [,1] [,2] [,3]
+    [1,]    0    2    3
+    [2,]    4    5    6
+    [3,]    7    8    9
+
+    > # Change the 1st row
+    > matrix4[1,] = c(10,11,12)
+    > matrix4
+        [,1] [,2] [,3]
+    [1,]   10   11   12
+    [2,]    4    5    6
+    [3,]    7    8    9
+
+    ```
 
 ### 20. 43:03 Arrays 
 
+- You can also create Matrices in layers
 
+    ```bash
+
+    > # Create a MULTI-DIMENSIONAL ARRAYS with 2 rows, columns and layers
+    > array1 = array(data=1:8, dim=c(2,2,2))
+    > array1
+    , , 1
+
+        [,1] [,2]
+    [1,]    1    3
+    [2,]    2    4
+
+    , , 2
+
+        [,1] [,2]
+    [1,]    5    7
+    [2,]    6    8
+
+    > # Get a value
+    > array1[1,2,2]
+    [1] 7
+
+    # Experiment grabbing values like we did with the Matrix. Everything is the same
+
+    ```
 
 ### 21. 44:22 Functions 
 
+- A function is R is an object that performs operations on passed attributes and then returns results or simply control back
 
+    ```r
+
+    # Create a function
+    getSum = function(num1, num2){
+        return(num1 + num2)
+    }
+
+    ```
+
+    ```bash
+    > sprintf("5 + 6 = %d", getSum(5,6))
+    [1] "5 + 6 = 11"
+    ```
+
+
+
+    ```r
+    # If there is no return the last expression is returned. You can define default attribute values
+    getDifference = function(num1=1, num2=1){
+        num1 - num2
+    }
+    ```
+
+    ```bash
+    > sprintf("5 - 6 = %d", getDifference(5,6))
+    [1] "5 - 6 = -1"
+    ```
+
+
+
+    ```r
+
+    # Return multiple values in a list
+    makeList = function(theString){
+        return (strsplit(theString, " "))
+    }
+
+    ```
+
+    ```bash
+
+    > makeList("Random Words")
+    [[1]]
+    [1] "Random" "Words" 
+    ```
+
+
+
+    ```r
+    # Handling missing arguments
+    missFunc = function(x){
+        if(missing(x)){
+            return("Missing Argument")
+        } else {
+            return(x)
+        }
+    }
+    ```
+
+    ```bash
+
+    > missFunc()
+    [1] "Missing Argument"
+    
+    ```
+
+
+
+    ```r
+
+    # Excepting variable number of arguments with ellipses
+    getSumMore = function(...){
+        numList = list(...)
+        sum = 0
+        for(i in numList){
+            sum = sum + i
+        }
+        sum # return sum
+    }
+
+    ```
+
+    ```bash
+    > getSumMore(1,2,3,4)
+    [1] 10
+    ```
 
 ### 22. 48:44 Anonymous Functions 
 
+- Disposable / Anonymous Functions are great for quick operations like doubling everything in a list
 
+    ```r
+    numList = 1:10
+    dblList = (function(x) x * 2)(numList)
+
+    ```
+
+    ```bash
+
+    > dblList
+    [1]  2  4  6  8 10 12 14 16 18 20
+
+    ```
 
 ### 23. 49:29 Closures 
 
+- Closures are functions created by functions
+    
+    ```r
+    # Create a function that finds x to a user defined power
+    power = function(exp){
+    function(x){
+        x ^ exp
+    }
+    }
+
+    ```
+
+    ```bash
+
+    > cubed = power(3)
+    > cubed(2)
+    [1] 8
+    > cubed(1:5)
+    [1]   1   8  27  64 125
+
+    ```
+
+
+
+    ```r
+
+    # You can store functions in lists
+    addFunc = list(
+        add2 = function(x) x + 2,
+        add3 = function(x) x + 3
+    )
+
+    ```
+
+    ```bash
+    # dot operator of Java, C, C++, Python seems to be replaced by $ in R
+    > addFunc$add2(5) 
+    [1] 7
+
+    ```
 
 
 ### 24. 51:30 Exception Handling 
 
+- Used to gracefully handle errors
+- I handle a division with string error
 
+    ```r
+    divide = function(num1, num2){
+        tryCatch(
+            num1 / num2,
+            error = function(e) {
+                # Check if it is string
+                if(is.character(num1) || is.character(num2)){
+                    print("Can't Divide with Strings")
+                }
+            })
+    }
+    ```
+
+    ```bash
+
+    > divide(10,"5")
+    [1] "Can't Divide with Strings"
+
+    ```
 
 ### 25. 53:11 File I/O 
 
+- Create a text file with headers fname lname sex
+and the data in a txt file Use ` for missing values
+- Save in the same directory as your R file
+- Supply the file to read, whether the 1st line is headers, what seperates the data, what is being used for missing data and false because you don't want to convert string vectors to factors
 
+    ```bash
+
+    > myPeople = read.table(file=file.choose(),
+    +                       header=T, sep=" ",
+    +                       na.strings= " \` ",
+    +                       stringsAsFactors=F)
+    > myPeople
+    fname   lname    sex
+    1   Andy Brennan   male
+    2  Harry  Truman   male
+    3   Lucy   Moran female
+    4   Dale  Cooper   male
+    5 Shelly Johnson female
+    6 Audrey   Horne female
+    7    Bob    <NA>   male
+
+    > # Add another person
+    > donnaRecord = data.frame(fname="Donna",
+    +                          lname="Heyward",
+    +                          sex="female")
+    > myPeople = rbind(myPeople, donnaRecord)
+
+    > # Update a record
+    > myPeople[7,2] = "Smith"
+
+    # Update the file by supplying the data.frame, the file to write, seperator, na whether to quote strings, whether to include row numbers
+    > write.table(x=myPeople, file=file.choose(),
+    +             sep=" ", na="\`",
+    +             quote=F, row.names=F)
+    # Dialogue box appears to choose a file to write in 
+
+    > # Get 1st 3 records
+    > head(myPeople, 3)
+    fname   lname    sex
+    1  Andy Brennan   male
+    2 Harry  Truman   male
+    3  Lucy   Moran female
+
+    > # Get remaining records
+    > tail(myPeople)
+    fname   lname    sex
+    3   Lucy   Moran female
+    4   Dale  Cooper   male
+    5 Shelly Johnson female
+    6 Audrey   Horne female
+    7    Bob   Smith   male
+    8  Donna Heyward female
+
+    ```
 
 ### 26. 58:29 Plotting 
 
+-  R provides great plotting tools
+
+    ```bash
+
+    # Plotting x y coordinates from a matrix
+    # 1st 5 are x and 2nd 5 are y
+    xy1 = matrix(data=c(1,2,3,4,5,
+                        1,2,3,4,5), nrow=5, ncol=5)
+    plot(xy1)
+
+    > # Draw a line
+    > x2 = c(1,2,3,4,5)
+    > y2 = c(1,2,3,4,5)
+    > plot(x2, y2, type="l")
+
+    > # Points and lines
+    > plot(x2, y2, type="b")
+
+    > # Points and lines with no space around points,
+    > # labels, a blue line (Find more with colors() in console)
+    > plot(x2, y2, type="o",
+    +      main="My Plot", xlab="x axis", ylab="y axis",
+    +      col="steelblue")
+
+    #----WEIRD PLOT-----
+    > # pch (1-25) defines different points
+    > # lty (1-6) defines different lines
+    > # xlim defines the max and min x plotting region
+    > # ylim defines the max and min y plotting region
+    > plot(x2, y2, type="b", pch=2, lty=2,
+    +      main="My Plot", xlab="x axis", ylab="y axis",
+    +      xlim=c(-8,8), ylim=c(-8,8))
+
+    > #----- Multiple plots-----
+    > plot(x2, y2, type="b")
+    > # Multiple plots
+    > plot(x2, y2, type="b")
+    > 
+    > # Adds straight lines at 2 and 4 coordinates
+    > abline(h=c(2,4), col="red",lty=2)
+    > # Multiple plots
+    > plot(x2, y2, type="b")
+    > 
+    > # Adds straight lines at 2 and 4 coordinates
+    > abline(h=c(2,4), col="red",lty=2)
+    > 
+    > # Draw a 2 segmented lines with starting and ending x
+    > # and y points
+    > segments(x0=c(2,4), y0=c(2,2), x1=c(2,4), y1=c(4,4),
+    +          col="red",lty=2)
+    > 
+    > # Draw an arrow
+    > arrows(x0=1.5, y0=4.55, x1=2.7, y1=3.3, col="blue")
+    > 
+    > # Print Text
+    > text(x=1.25, y=4.75, labels="Center")
+
+    > # -----Load a built in data.frame-----
+    > plot(faithful)
+    > 
+    > # Highlight eruptions with a waiting time greater than 4
+    > eruptions4 = with(faithful, faithful[eruptions > 4,])
+
+    # Draw specific points
+    points(eruptions4, col="red", pch=3)
+
+    ```
 
 
 ### 27. 1:08:14 Math Functions 
 
+- Some math functions :
 
+    ```bash
+
+    > sqrt(x=100)
+    [1] 10
+    > 
+    > # Get the power you raise the base to get x
+    > log(x=4, base=2)
+    [1] 2
+    > 
+    > # Euler's number 2.718 to the power of x
+    > exp(x=2)
+    [1] 7.389056
+    > 
+    > # Sum all vector values
+    > sum(c(1,2,3))
+    [1] 6
+    > 
+    > # Find the mean (average)
+    > randD1 = c(1,5,6,7,10,16)
+    > mean(randD1)
+    [1] 7.5
+    > 
+    > # The median (Middle Number or avg of middle 2)
+    > median(randD1)
+    [1] 6.5
+    > 
+    > # Minimum value
+    > min(randD1)
+    [1] 1
+    > 
+    > # Maximum value
+    > max(randD1)
+    [1] 16
+    > 
+    > # Min and max
+    > range(randD1)
+    [1]  1 16
+    > 
+    > # Rounding
+    > ceiling(4.5)
+    [1] 5
+    > floor(4.5)
+    [1] 4
+    > 
+    > # Cumulatives
+    > cumsum(c(1,2,3))
+    [1] 1 3 6
+    > cumprod(c(1,2,3))
+    [1] 1 2 6
+    > cummax(c(7:9, 4:6, 1:3))
+    [1] 7 8 9 9 9 9 9 9 9
+    > cummin(c(4:6, 1:3, 7:9))
+    [1] 4 4 4 1 1 1 1 1 1
+    > 
+    ```
 
 ### 28. 1:11:18 Random Numbers
 
+-  Generating Random samples
+
+    ```bash
+        > # Flipping a coin 10 times and weigh the probability
+        > # of the next flip based on the previous
+        > sample(0:1,10,replace=T)
+        [1] 0 0 0 1 0 1 1 1 1 0
+        > 
+        > sample(1:20,10,replace=T)
+        [1] 15 15  8 10  6  9  8  3  3 20
+    ```
 
 
 ### 29. 1:12:18 Pie Charts 
 
+- Follow the code with percentage and item required to form a pie chart: 
 
+    ```r
+
+    # List percentages
+    foodPref = c(15, 35, 10, 25, 15)
+
+    # Labels associated with percentages
+    foodLabels = c("Spaghetti", "Pizza", "Mac n' Cheese",
+                "Chicken Nuggets", "Tacos")
+
+    # Where to save the image
+    png(file="child_food_pref.png")
+
+    # Colors used for each option
+    colors = rainbow(length(foodPref))
+
+    # Create the chart
+    pie(foodPref, foodLabels, main="Food Prefs",
+        col=colors)
+
+    # Print legend and cex shrinks the size
+    legend("topright", c("Spaghetti", "Pizza", "Mac n' Cheese",
+                        "Chicken", "Tacos"), cex=0.8,
+        fill=colors)
+
+    # Save the chart
+    dev.off()
+
+    ```
+- You have to download a package for 3d pie charts.
+- Go to console and type the following:
+
+    ```bash
+
+    > install.packages("plotrix")
+    WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+    https://cran.rstudio.com/bin/windows/Rtools/
+    Installing package into ‘C:/Users/intab/OneDrive/Documents/R/win-library/3.6’
+    (as ‘lib’ is unspecified)
+    trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.6/plotrix_3.7-6.zip'
+    Content type 'application/zip' length 1146848 bytes (1.1 MB)
+    downloaded 1.1 MB
+
+    package ‘plotrix’ successfully unpacked and MD5 sums checked
+
+    The downloaded binary packages are in
+        C:\Users\intab\AppData\Local\Temp\Rtmp6RoFqJ\downloaded_packages
+
+    ```
+- Code for 3D pie charts:
+
+    ```r
+
+    # 3D Pie Chart
+    # Download package in console install.packages("plotrix")
+    # Get the library
+    library(plotrix)
+
+    # Name the chart file
+    png(file="3d_child_food_pref.png")
+
+    # Create the chart
+    pie3D(foodPref, labels=foodLabels, explode=0.1,
+        start=pi/2, main="Food Prefs", labelcex=0.8)
+
+    # Save the chart
+    dev.off()
+
+    ```
 
 ### 30. 1:17:56 Bar Charts 
 
+- Define the bar chart file
 
+    ```r
+
+    png(file="food_pref_bar_chart.png")
+
+    # Plot the chart
+    barplot(foodPref, names.arg=foodLabels, xlab="Votes",
+            ylab="Food Options", col=colors,
+            main="Food Prefs")
+
+    # Save File
+    dev.off()
+
+    ```
 
 ### 31. 1:20:12 Regression Analysis
 
+- Used to study a relationship between 2 separate pieces of data (What is the relation between batting average and RBIS)
 
+    ```r
+    #pulling in the data
+    mlbPlayers = read.table(file=file.choose(),
+                            header=T, sep=" ",
+                            na.strings="`",
+                            stringsAsFactors=F)
+
+    #Calculate the average and RBI out of the data
+    playerData = mlbPlayers[,c("RBI","AVG")]
+
+    # Create relationship model between AVG and RBIs
+    relation = lm(playerData$RBI~playerData$AVG)
+
+    # Create file
+    png(file="RBI_AVG_Regression.png")
+
+    # Plot the chart
+    plot(playerData$AVG, playerData$RBI,
+        main="AVG & RBI Regression",
+        abline(lm(playerData$RBI~playerData$AVG)),
+        xlab="AVG", ylab="RBIs")
+
+    # Save chart
+    dev.off()
+
+    ```
+    
+### 32. Bonus (Multiple Regression)
+
+- Used to study the impact on one variable from numerous others
+
+    ```r
+
+    # Estimate RBIs based on other player stats
+    playerData2 = mlbPlayers[,c("RBI","AVG","HR","OBP",
+                                "SLG","OPS")]
+
+    # Create the relationship model
+    relation2 = lm(playerData2$RBI ~ playerData2$AVG +
+                    playerData2$HR + playerData2$OBP +
+                    playerData2$SLG + playerData2$OPS)
+
+    sprintf("Intercept : %f1.4", coef(relation2)[1])
+
+    # How stats effect RBIs
+    sprintf("AVG : %f1.4", coef(relation2)[2])
+    sprintf("HR : %f1.4", coef(relation2)[3])
+    sprintf("OBP : %f1.4", coef(relation2)[4])
+    sprintf("SLG : %f1.4", coef(relation2)[5])
+    sprintf("OPS : %f1.4", coef(relation2)[6])
+
+    # Calculate expected RBIs based on stats
+    # Evan Longoria
+    # RBIs   AVG   HR   OBP   SLG   OPS
+    # 86     .261  20  .313  .424  .737
+    RBIGuess = -5.05 + (372.96 * .261) + (2.56 * 20) +
+    (-5.41 * .313) + (-167.37 * .424)
+    RBIGuess
+
+    ```
+
+    ```bash
+    > RBIGuess
+    [1] 70.83435
+    ```

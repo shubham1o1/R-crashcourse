@@ -254,443 +254,454 @@ wdFact = factor(x=wDays, levels=dow, ordered=T)
 
 wdFact
 
-# # ----- DATA FRAMES -----
-# # A Data Frame is a table which contains any type 
-# # of data and an equal amount of data in each column
-# 
-# # Each row is called a record and each column a varaible
-# 
-# # Create customer data frame
-# custData = data.frame(name=c("Tom", "Sally", "Sue"),
-#                       age=c(43, 28, 35), 
-#                       stringsAsFactors=F)
-# 
-# custData
-# 
-# # Get data in row 1 column 1
-# custData[1,1]
-# 
-# # Get all data in 1st row
-# custData[1,1:2]
-# 
-# # Get all ages
-# custData[1:3, 2]
-# 
-# # Get dimensions
-# dim(custData)
-# 
-# # Add another record
-# recordMark = data.frame(name="Mark", age=33)
-# custData = rbind(custData, recordMark)
-# custData
-# 
-# # Add a column representing debt
-# debt = c(0, 25.50, 36, 48.19)
-# custData = cbind(custData, debt)
-# custData
-# 
-# # Check if money is owed
-# owesMoney = custData[custData$debt > 0,]
-# owesMoney
-# 
-# # ----- LOOPING -----
-# # Repeat until a condition is met
-# num = 1
-# repeat{
-#   print(num)
-#   num = num + 1
-#   if(num > 5){
-#     
-#     # Jumps out of loop
-#     break
-#   }
-# }
-# 
-# # Repeat while condition is true
-# while(num > 0){
-#   num = num - 1
-#   
-#   # next skips the rest of the loop and jumps
-#   # back to the top
-#   if(num %% 2 == 0){
-#     next
-#   }
-#   print(num)
-# }
-# 
-# # For can be used to cycle through a vector
-# # or do the same thing a specific number of times
-# oneTo5 = 1:5
-# for (i in oneTo5){
-#   print(i)
-# }
-# 
-# # ----- MATRICES -----
-# # A Matrix stores values in rows and columns
-# 
-# # Create a Matrix with a single column
-# matrix1 = matrix(data=c(1,2,3,4))
-# matrix1
-# 
-# # Create a matrix with defined rows and columns
-# matrix2 = matrix(data=c(1,2,3,4), nrow=2, ncol=2)
-# matrix2
-# 
-# # You can also fill by row (You can use T or TRUE)
-# matrix3 = matrix(data=c(1,2,3,4), nrow=2, ncol=2, byrow=T)
-# matrix3
-# 
-# # Get a Matrix dimension
-# dim(matrix3)
-# 
-# # A value at row, column
-# matrix3[1,2]
-# 
-# # Get a whole row
-# matrix3[1,]
-# 
-# # Get a whole column
-# matrix3[,2]
-# 
-# # Combine vectors to make a Matrix
-# matrix4 = rbind(1:3, 4:6, 7:9)
-# matrix4
-# 
-# # Get 2nd and 3rd row
-# matrix4[2:3,]
-# 
-# # Get 2nd and 3rd row by ommitting the 1st
-# matrix4[-1,]
-# 
-# # Change the first value
-# matrix4[1,1] = 0
-# matrix4
-# 
-# # Change the 1st row
-# matrix4[1,] = c(10,11,12)
-# matrix4
-# 
-# # ----- MULTI-DIMENSIONAL ARRAYS -----
-# # You can also create Matrices in layers
-# 
-# # Create a MDA with 2 rows, columns and layers
-# array1 = array(data=1:8, dim=c(2,2,2))
-# array1
-# 
-# # Get a value
-# array1[1,2,2]
-# 
-# # Experiment grabbing values like we did with the Matrix
-# # Everything is the same
-# 
-# # ----- FUNCTIONS -----
-# # A function is R is an object that performs operations
-# # on passed attributes and then returns results
-# # or simply control back
-# 
-# getSum = function(num1, num2){
-#   return(num1 + num2)
-# }
-# 
-# sprintf("5 + 6 = %d", getSum(5,6))
-# 
-# # If there is no return the last expression is returned
-# # You can define default attribute values
-# getDifference = function(num1=1, num2=1){
-#   num1 - num2
-# }
-# 
-# sprintf("5 - 6 = %d", getDifference(5,6))
-# 
-# # Return multiple values in a list
-# makeList = function(theString){
-#   return (strsplit(theString, " "))
-# }
-# 
-# makeList("Random Words")
-# 
-# # Handling missing arguments
-# missFunc = function(x){
-#   if(missing(x)){
-#     return("Missing Argument")
-#   } else {
-#     return(x)
-#   }
-# }
-# 
-# missFunc()
-# 
-# # Excepting variable number of arguments with ellipses
-# getSumMore = function(...){
-#   numList = list(...)
-#   sum = 0
-#   for(i in numList){
-#     sum = sum + i
-#   }
-#   sum
-# }
-# 
-# getSumMore(1,2,3,4)
-# 
-# # Disposable / Anonymous Functions are great for 
-# # quick operations like doubling everything in a list
-# numList = 1:10
-# dblList = (function(x) x * 2)(numList)
-# dblList
-# 
-# # Closures are functions created by functions
-# # Create a function that finds x to a user defined
-# # power
-# power = function(exp){
-#   function(x){
-#     x ^ exp
-#   }
-# }
-# 
-# cubed = power(3)
-# cubed(2)
-# cubed(1:5)
-# 
-# # You can store functions in lists
-# addFunc = list(
-#   add2 = function(x) x + 2,
-#   add3 = function(x) x + 3
-# )
-# 
-# addFunc$add2(5)
-# 
-# # ----- EXCEPTION HANDLING -----
-# # Used to gracefully handle errors
-# # I handle a division with string error
-# 
-# divide = function(num1, num2){
-#   tryCatch(
-#     num1 / num2,
-#     error = function(e) {
-#       if(is.character(num1) || is.character(num2)){
-#         print("Can't Divide with Strings")
-#       }
-#     })
-# }
-# 
-# divide(10,"5")
-# 
-# # ----- READING WRITING FILES -----
-# # Create a text file with headers fname lname sex
-# # and the data in a txt file Use `for missing values
-# # Save in the same directory as your R file
-# 
-# # Supply the file to read, whether the 1st line is 
-# # headers, what seperates the data, what is being used
-# # for missing data and false because you don't want to
-# # convert string vectors to factors
-# 
-# # myPeople is a data frame
-# myPeople = read.table(file=file.choose(),
-#                       header=T, sep=" ",
-#                       na.strings="`",
-#                       stringsAsFactors=F)
-# myPeople
-# 
-# # Add another person
-# donnaRecord = data.frame(fname="Donna",
-#                          lname="Heyward",
-#                          sex="female")
-# myPeople = rbind(myPeople, donnaRecord)
-# 
-# # Update a record
-# myPeople[7,2] = "Smith"
-# 
-# # Update the file by supplying the data.frame,
-# # the file to write, seperator, na, whether to
-# # quote strings, whether to include row numbers
-# write.table(x=myPeople, file=file.choose(),
-#             sep=" ", na="`",
-#             quote=F, row.names=F)
-# 
-# # Get 1st 3 records
-# head(myPeople, 3)
-# 
-# # Get remaining records
-# tail(myPeople)
-# 
-# # ----- BASIC PLOTTING -----
-# # R provides great plotting tools
-# 
-# # Plotting x y coordinates from a matrix
-# # 1st 5 are x and 2nd 5 are y
-# xy1 = matrix(data=c(1,2,3,4,5,
-#                     1,2,3,4,5), nrow=5, ncol=5)
-# plot(xy1)
-# 
-# # Draw a line
-# x2 = c(1,2,3,4,5)
-# y2 = c(1,2,3,4,5)
-# plot(x2, y2, type="l")
-# 
-# # Points and lines
-# plot(x2, y2, type="b")
-# 
-# # Points and lines with no space around points,
-# # labels, a blue line (Find more with colors())
-# plot(x2, y2, type="o", 
-#      main="My Plot", xlab="x axis", ylab="y axis",
-#      col="steelblue")
-# 
-# # pch (1-25) defines different points
-# # lty (1-6) defines different lines
-# # xlim defines the max and min x plotting region
-# # ylim defines the max and min y plotting region
-# plot(x2, y2, type="b", pch=2, lty=2,
-#      xlim=c(-8,8), ylim=c(-8,8))
-# 
-# # Multiple plots
-# plot(x2, y2, type="b")
-# 
-# # Adds straight lines at 2 and 4 coordinates
-# abline(h=c(2,4), col="red",lty=2)
-# 
-# # Draw a 2 segmented lines with starting and ending x
-# # and y points
-# segments(x0=c(2,4), y0=c(2,2), x1=c(2,4), y1=c(4,4),
-#          col="red",lty=2)
-# 
-# # Draw an arrow
-# arrows(x0=1.5, y0=4.55, x1=2.7, y1=3.3, col="blue")
-# 
-# # Print Text
-# text(x=1.25, y=4.75, labels="Center")
-# 
-# # Load a built in data.frame
-# plot(faithful)
-# 
-# # Highlight eruptions with a waiting time greater
-# # then 4
-# eruptions4 = with(faithful, faithful[eruptions > 4,])
-# 
-# # Draw specific points
-# points(eruptions4, col="red", pch=3)
-# 
-# 
-# 
-# # ----- MATH FUNCTIONS -----
-# sqrt(x=100)
-# 
-# # Get the power you raise the base to get x
-# log(x=4, base=2)
-# 
-# # Euler's number 2.718 to the power of x
-# exp(x=2)
-# 
-# # Sum all vector values
-# sum(c(1,2,3))
-# 
-# # Find the mean (average)
-# randD1 = c(1,5,6,7,10,16)
-# mean(randD1)
-# 
-# # The median (Middle Number or avg of middle 2)
-# median(randD1)
-# 
-# # Minimum value
-# min(randD1)
-# 
-# # Maximum value
-# max(randD1)
-# 
-# # Min and max
-# range(randD1)
-# 
-# # Rounding
-# ceiling(4.5)
-# floor(4.5)
-# 
-# # Cumulatives
-# cumsum(c(1,2,3))
-# cumprod(c(1,2,3))
-# cummax(c(7:9, 4:6, 1:3))
-# cummin(c(4:6, 1:3, 7:9))
-# 
-# # Generating Random samples
-# # Flipping a coin 10 times and weigh the probability
-# # of the next flip based on the previous
-# sample(0:1,10,replace=T)
-# 
-# sample(1:20,10,replace=T)
-# 
-# # ----- PIE CHARTS -----
-# # List percentages
-# foodPref = c(15, 35, 10, 25, 15)
-# 
-# # Labels associated with percentages
-# foodLabels = c("Spaghetti", "Pizza", "Mac n' Cheese",
-#                "Chicken Nuggets", "Tacos")
-# 
-# # Where to save the image
-# png(file="child_food_pref.png")
-# 
-# # Colors used for each option
-# colors = rainbow(length(foodPref))
-# 
-# # Create the chart
-# pie(foodPref, foodLabels, main="Food Prefs",
-#     col=colors)
-# 
-# # Print legend and cex shrinks the size
-# legend("topright", c("Spaghetti", "Pizza", "Mac n' Cheese",
-#                      "Chicken", "Tacos"), cex=0.8,
-#        fill=colors)
-# 
-# # Save the chart
-# dev.off()
-# 
-# # 3D Pie Chart
-# # Download package in console install.packages("plotrix")
-# # Get the library
-# library(plotrix)
-# 
-# # Name the chart file
-# png(file="3d_child_food_pref.png")
-# 
-# # Create the chart
-# pie3D(foodPref, labels=foodLabels, explode=0.1,
-#       start=pi/2, main="Food Prefs", labelcex=0.8)
-# 
-# # Save the chart
-# dev.off()
-# 
-# # ----- BAR CHARTS -----
-# # Define the bar chart file
-# png(file="food_pref_bar_chart.png")
-# 
-# # Plot the chart
-# barplot(foodPref, names.arg=foodLabels, xlab="Votes",
-#         ylab="Food Options", col=colors, 
-#         main="Food Prefs")
-# 
-# # Save File
-# dev.off()
-# 
-# # ----- REGRESSION ANALYSIS -----
-# # Used to study a relationship between 2 separate 
-# # pieces of data (What is the relation between batting
-# # average and RBIS)
-# 
-# # Create relationship model between AVG and RBIs
-# relation = lm(playerData$RBI~playerData$AVG)
-# 
-# # Create file 
-# png(file="RBI_AVG_Regression.png")
-# 
-# # Plot the chart
-# plot(playerData$AVG, playerData$RBI, 
-#      main="AVG & RBI Regression", 
-#      abline(lm(playerData$RBI~playerData$AVG)),
-#      xlab="AVG", ylab="RBIs")
-# 
-# # Save chart
-# dev.off()
-# 
+# ----- DATA FRAMES -----
+# A Data Frame is a table which contains any type
+# of data and an equal amount of data in each column
+
+# Each row is called a record and each column a varaible
+
+# Create customer data frame
+custData = data.frame(name=c("Tom", "Sally", "Sue"),
+                      age=c(43, 28, 35),
+                      stringsAsFactors=F)
+
+custData
+
+# Get data in row 1 column 1
+custData[1,1]
+
+# Get all data in 1st row
+custData[1,1:2]
+
+# Get all ages
+custData[1:3, 2]
+
+# Get dimensions
+dim(custData)
+
+# Add another record
+recordMark = data.frame(name="Mark", age=33)
+custData = rbind(custData, recordMark)
+custData
+
+# Add a column representing debt
+debt = c(0, 25.50, 36, 48.19)
+custData = cbind(custData, debt)
+custData
+
+# Check if money is owed
+owesMoney = custData[custData$debt > 0,]
+owesMoney
+
+# ----- LOOPING -----
+# Repeat until a condition is met
+num = 1
+repeat{
+  print(num)
+  num = num + 1
+  if(num > 5){
+
+    # Jumps out of loop
+    break
+  }
+}
+
+# Repeat while condition is true
+while(num > 0){
+  num = num - 1
+
+  # next skips the rest of the loop and jumps
+  # back to the top
+  if(num %% 2 == 0){
+    next
+  }
+  print(num)
+}
+
+# For can be used to cycle through a vector
+# or do the same thing a specific number of times
+oneTo5 = 1:5
+for (i in oneTo5){
+  print(i)
+}
+
+# ----- MATRICES -----
+# A Matrix stores values in rows and columns
+
+# Create a Matrix with a single column
+matrix1 = matrix(data=c(1,2,3,4))
+matrix1
+
+# Create a matrix with defined rows and columns
+matrix2 = matrix(data=c(1,2,3,4), nrow=2, ncol=2)
+matrix2
+
+# You can also fill by row (You can use T or TRUE)
+matrix3 = matrix(data=c(1,2,3,4), nrow=2, ncol=2, byrow=T)
+matrix3
+
+# Get a Matrix dimension
+dim(matrix3)
+
+# A value at row, column
+matrix3[1,2]
+
+# Get a whole row
+matrix3[1,]
+
+# Get a whole column
+matrix3[,2]
+
+# Combine vectors to make a Matrix
+matrix4 = rbind(1:3, 4:6, 7:9)
+matrix4
+
+# Get 2nd and 3rd row
+matrix4[2:3,]
+
+# Get 2nd and 3rd row by ommitting the 1st
+matrix4[-1,]
+
+# Change the first value
+matrix4[1,1] = 0
+matrix4
+
+# Change the 1st row
+matrix4[1,] = c(10,11,12)
+matrix4
+
+# ----- MULTI-DIMENSIONAL ARRAYS -----
+# You can also create Matrices in layers
+
+# Create a MULTI-DIMENSIONAL ARRAYS with 2 rows, columns and layers
+array1 = array(data=1:8, dim=c(2,2,2))
+array1
+
+# Get a value
+array1[1,2,2]
+
+# Experiment grabbing values like we did with the Matrix
+# Everything is the same
+
+# ----- FUNCTIONS -----
+# A function is R is an object that performs operations
+# on passed attributes and then returns results
+# or simply control back
+
+# Create a function
+getSum = function(num1, num2){
+  return(num1 + num2)
+}
+
+sprintf("5 + 6 = %d", getSum(5,6))
+
+# If there is no return the last expression is returned
+# You can define default attribute values
+getDifference = function(num1=1, num2=1){
+  num1 - num2
+}
+
+sprintf("5 - 6 = %d", getDifference(5,6))
+
+# Return multiple values in a list
+makeList = function(theString){
+  return (strsplit(theString, " "))
+}
+
+makeList("Random Words")
+
+# Handling missing arguments
+missFunc = function(x){
+  if(missing(x)){
+    return("Missing Argument")
+  } else {
+    return(x)
+  }
+}
+
+missFunc()
+
+# Excepting variable number of arguments with ellipses
+getSumMore = function(...){
+  numList = list(...)
+  sum = 0
+  for(i in numList){
+    sum = sum + i
+  }
+  sum
+}
+
+getSumMore(1,2,3,4)
+
+# Disposable / Anonymous Functions are great for
+# quick operations like doubling everything in a list
+numList = 1:10
+dblList = (function(x) x * 2)(numList)
+dblList
+
+# Closures are functions created by functions
+# Create a function that finds x to a user defined
+# power
+power = function(exp){
+  function(x){
+    x ^ exp
+  }
+}
+
+cubed = power(3)
+cubed(2)
+cubed(1:5)
+
+# You can store functions in lists
+addFunc = list(
+  add2 = function(x) x + 2,
+  add3 = function(x) x + 3
+)
+
+addFunc$add2(5)
+
+# ----- EXCEPTION HANDLING -----
+# Used to gracefully handle errors
+# I handle a division with string error
+
+divide = function(num1, num2){
+  tryCatch(
+    num1 / num2,
+    error = function(e) {
+      if(is.character(num1) || is.character(num2)){
+        print("Can't Divide with Strings")
+      }
+    })
+}
+
+divide(10,"5")
+
+# ----- READING WRITING FILES -----
+
+# Create a text file with headers fname lname sex
+# and the data in a txt file Use `for missing values
+# Save in the same directory as your R file
+# 
+# Supply the file to read, whether the 1st line is
+# headers, what seperates the data, what is being used
+# for missing data and false because you don't want to
+# convert string vectors to factors
+
+# myPeople is a data frame
+myPeople = read.table(file=file.choose(),
+                      header=T, sep=" ",
+                      na.strings="`",
+                      stringsAsFactors=F)
+myPeople
+
+# Add another person
+donnaRecord = data.frame(fname="Donna",
+                         lname="Heyward",
+                         sex="female")
+myPeople = rbind(myPeople, donnaRecord)
+
+# Update a record
+myPeople[7,2] = "Smith"
+
+# Update the file by supplying the data.frame,
+# the file to write, seperator, na, whether to
+# quote strings, whether to include row numbers
+write.table(x=myPeople, file=file.choose(),
+            sep=" ", na="`",
+            quote=F, row.names=F)
+
+# Get 1st 3 records
+head(myPeople, 3)
+
+# Get remaining records
+tail(myPeople)
+
+# ----- BASIC PLOTTING -----
+# R provides great plotting tools
+
+# Plotting x y coordinates from a matrix
+# 1st 5 are x and 2nd 5 are y
+xy1 = matrix(data=c(1,2,3,4,5,
+                    1,2,3,4,5), nrow=5, ncol=5)
+plot(xy1)
+
+# Draw a line
+x2 = c(1,2,3,4,5)
+y2 = c(1,2,3,4,5)
+plot(x2, y2, type="l")
+
+# Points and lines
+plot(x2, y2, type="b")
+
+# Points and lines with no space around points,
+# labels, a blue line (Find more with colors())
+plot(x2, y2, type="o",
+     main="My Plot", xlab="x axis", ylab="y axis",
+     col="steelblue")
+
+# pch (1-25) defines different points
+# lty (1-6) defines different lines
+# xlim defines the max and min x plotting region
+# ylim defines the max and min y plotting region
+plot(x2, y2, type="b", pch=2, lty=2,
+     main="My Plot", xlab="x axis", ylab="y axis",
+     xlim=c(-8,8), ylim=c(-8,8))
+
+# Multiple plots
+plot(x2, y2, type="b")
+
+# Adds straight lines at 2 and 4 coordinates
+abline(h=c(2,4), col="red",lty=2)
+
+# Draw a 2 segmented lines with starting and ending x
+# and y points
+segments(x0=c(2,4), y0=c(2,2), x1=c(2,4), y1=c(4,4),
+         col="red",lty=2)
+
+# Draw an arrow
+arrows(x0=1.5, y0=4.55, x1=2.7, y1=3.3, col="blue")
+
+# Print Text
+text(x=1.25, y=4.75, labels="Center")
+
+# Load a built in data.frame
+plot(faithful)
+
+# Highlight eruptions with a waiting time greater than 4
+eruptions4 = with(faithful, faithful[eruptions > 4,])
+
+# Draw specific points
+points(eruptions4, col="red", pch=3)
+
+
+
+# ----- MATH FUNCTIONS -----
+sqrt(x=100)
+
+# Get the power you raise the base to get x
+log(x=4, base=2)
+
+# Euler's number 2.718 to the power of x
+exp(x=2)
+
+# Sum all vector values
+sum(c(1,2,3))
+
+# Find the mean (average)
+randD1 = c(1,5,6,7,10,16)
+mean(randD1)
+
+# The median (Middle Number or avg of middle 2)
+median(randD1)
+
+# Minimum value
+min(randD1)
+
+# Maximum value
+max(randD1)
+
+# Min and max
+range(randD1)
+
+# Rounding
+ceiling(4.5)
+floor(4.5)
+
+# Cumulatives
+cumsum(c(1,2,3))
+cumprod(c(1,2,3))
+cummax(c(7:9, 4:6, 1:3))
+cummin(c(4:6, 1:3, 7:9))
+
+# Generating Random samples
+# Flipping a coin 10 times and weigh the probability
+# of the next flip based on the previous
+sample(0:1,10,replace=T)
+
+sample(1:20,10,replace=T)
+
+# ----- PIE CHARTS -----
+# List percentages
+foodPref = c(15, 35, 10, 25, 15)
+
+# Labels associated with percentages
+foodLabels = c("Spaghetti", "Pizza", "Mac n' Cheese",
+               "Chicken Nuggets", "Tacos")
+
+# Where to save the image
+png(file="child_food_pref.png")
+
+# Colors used for each option
+colors = rainbow(length(foodPref))
+
+# Create the chart
+pie(foodPref, foodLabels, main="Food Prefs",
+    col=colors)
+
+# Print legend and cex shrinks the size
+legend("topright", c("Spaghetti", "Pizza", "Mac n' Cheese",
+                     "Chicken", "Tacos"), cex=0.8,
+       fill=colors)
+
+# Save the chart
+dev.off()
+
+# 3D Pie Chart
+# Download package in console install.packages("plotrix")
+# Get the library
+library(plotrix)
+
+# Name the chart file
+png(file="3d_child_food_pref.png")
+
+# Create the chart
+pie3D(foodPref, labels=foodLabels, explode=0.1,
+      start=pi/2, main="Food Prefs", labelcex=0.8)
+
+# Save the chart
+dev.off()
+
+# ----- BAR CHARTS -----
+# Define the bar chart file
+png(file="food_pref_bar_chart.png")
+
+# Plot the chart
+barplot(foodPref, names.arg=foodLabels, xlab="Votes",
+        ylab="Food Options", col=colors,
+        main="Food Prefs")
+
+# Save File
+dev.off()
+
+# ----- REGRESSION ANALYSIS -----
+# Used to study a relationship between 2 separate
+# pieces of data (What is the relation between batting
+# average and RBIS)
+
+#pulling in the data
+mlbPlayers = read.table(file=file.choose(),
+                        header=T, sep=" ",
+                        na.strings="`",
+                        stringsAsFactors=F)
+
+#Calculate the average and RBI out of the data
+playerData = mlbPlayers[,c("RBI","AVG")]
+
+# Create relationship model between AVG and RBIs
+relation = lm(playerData$RBI~playerData$AVG)
+
+# Create file
+png(file="RBI_AVG_Regression.png")
+
+# Plot the chart
+plot(playerData$AVG, playerData$RBI,
+     main="AVG & RBI Regression",
+     abline(lm(playerData$RBI~playerData$AVG)),
+     xlab="AVG", ylab="RBIs")
+
+# Save chart
+dev.off()
+
 # # ----- MULTIPLE REGRESSION -----
 # # Used to study the impact on one variable from numerous 
 # # others
