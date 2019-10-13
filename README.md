@@ -269,6 +269,8 @@
 
 ### 9.  20:17 Relational Operators
 
+- Consle codes: 
+
     ```bash
 
     > iAmTrue = TRUE
