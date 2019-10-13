@@ -7,13 +7,13 @@
 
 ## Content:
 
-#### 1.  00:40 Installation
+### 1.  00:40 Installation
 
 - link to go to to download R : https://cran.r-project.org
 - go to R for windows -> click on base -> click Download R 3.6.1 for Windows
 - Everything default
 
-#### 2.  02:14 R Studio Setup 
+### 2.  02:14 R Studio Setup 
 
 - Go to https://www.rstudio.com and download the free version of rstudio
 - Install R studio and open it. Console, terminal and jobs appears. You can do everything on a console that you can do in the regular R file
@@ -33,7 +33,7 @@
 
     ```
 
-#### 3.  04:12 Fun Example 
+### 3.  04:12 Fun Example 
 
 - A Scatterplot to see if batting average is directly connected to runs produced.
 
@@ -62,8 +62,21 @@
     ```
 - So we haven't specified the path to the data file. When we run the above script a browse window appears in our working directory, where we can specify the data file. After running the script playerrbi_avg.png file is created in the working directory. 
 
-#### 4.  09:57 Assignment 
+### 4.  09:57 Assignment 
+
+-  You can assign a value using = or <-
+    
+    ```r
+
+    myNum = 5
+    myNum <- 5
+
+    ```
+
 #### 5.  10:22 Variables 
+
+- 
+
 #### 6.  10:37 Data Types 
 #### 7.  13:33 Arithmetic Operators 
 #### 8.  14:59 Vectors 
