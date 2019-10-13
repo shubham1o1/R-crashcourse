@@ -305,7 +305,9 @@
 
 ### 10. 22:15 Logical Operators 
 
-    ```r
+- Consle codes: 
+
+    ```bash
 
     > cat("TRUE && FALSE = ", T && F, "\n")
     TRUE && FALSE =  FALSE 
@@ -318,7 +320,9 @@
 
 ### 11. 23:00 If 
 
-    ```r
+- Consle codes: 
+
+    ```bash
 
     age = 18
 
@@ -350,6 +354,8 @@
     ```
 
 ### 13. 25:34 Strings 
+
+- Consle codes: 
 
     ```bash
     
@@ -441,7 +447,7 @@
 
     ```
 
-#### 16. 36:00 Repeat 
+### 16. 36:00 Repeat 
 
 
 
