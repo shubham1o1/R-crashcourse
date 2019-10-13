@@ -4,7 +4,6 @@
 
 ---
 
-
 ## Content:
 
 ### 1.  00:40 Installation
@@ -320,13 +319,13 @@
 
 ### 11. 23:00 If 
 
-- Consle codes: 
+- if, else and else if works like other languages: 
 
-    ```bash
+    ```r
 
     age = 18
 
-    # if, else and else if works like other languages
+
     if(age >= 18) {
         print("Drive and Vote")
     } else if (age >= 16){
@@ -336,11 +335,14 @@
     }
 
     ```
+
 ### 12. 24:04 Switch 
+
+- Used when you have a limited set of possible values
 
     ```r
 
-    # Used when you have a limited set of possible values
+
     grade = "Z"
 
     switch(grade,
@@ -355,7 +357,7 @@
 
 ### 13. 25:34 Strings 
 
-- Consle codes: 
+- Indexing is possible and starts at 1.  
 
     ```bash
     
