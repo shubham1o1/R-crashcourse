@@ -1051,7 +1051,7 @@ and the data in a txt file Use ` for missing values
     ```
 - Output plot:
 
-    ![Faithful](pictures_sorted\4_loadbuiltin.png)
+    ![Faithful](pictures_sorted/4_loadbuiltin.png)
 
 - Highlight eruptions:
     ```bash
@@ -1062,7 +1062,7 @@ and the data in a txt file Use ` for missing values
     points(eruptions4, col="red", pch=3)
 - Output plot:
 
-    ![specific points](pictures_sorted\4a_specificloadbuiltin.png)
+    ![specific points](pictures_sorted/4a_specificloadbuiltin.png)
     ```
 
 ### 27. 1:08:14 Math Functions 
