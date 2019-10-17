@@ -61,6 +61,8 @@
     ```
 - Select the code and click on run. 
 - We haven't specified the path to the data file. When we run the above script a browse window dialogue box appears in our working directory. Here we can specify the file that contains data. After running the script playerrbi_avg.png file is created in the working directory. 
+- following o/p is produced:
+![RBI vs Batting Average](pictures_sorted/1player_rbi_avg.png)
 
 ### 4.  09:57 Assignment 
 
@@ -951,7 +953,7 @@ and the data in a txt file Use ` for missing values
 ### 26. 58:29 Plotting 
 
 -  R provides great plotting tools
-
+- Point plot:
     ```bash
 
     # Plotting x y coordinates from a matrix
@@ -959,21 +961,41 @@ and the data in a txt file Use ` for missing values
     xy1 = matrix(data=c(1,2,3,4,5,
                         1,2,3,4,5), nrow=5, ncol=5)
     plot(xy1)
+    ```
+    - Output plot:
+    ![Point Plot](pictures_sorted/2a_point.png)
 
+- Line Plot:
+    ```bash
     > # Draw a line
     > x2 = c(1,2,3,4,5)
     > y2 = c(1,2,3,4,5)
     > plot(x2, y2, type="l")
+    ```
+    - Output plot:
+    ![Line Plot](pictures_sorted/2b_line.png)
 
+- Points and lines:
+    ```bash
     > # Points and lines
     > plot(x2, y2, type="b")
+    ```
+    - Output plot:
+    ![Point and Line Plot](pictures_sorted/2c_pointandline.png)
 
+- Point and lines with no space around points. Line is formatted with color
+    ```bash
     > # Points and lines with no space around points,
     > # labels, a blue line (Find more with colors() in console)
     > plot(x2, y2, type="o",
     +      main="My Plot", xlab="x axis", ylab="y axis",
     +      col="steelblue")
+    ```
+    - Output plot:
+    ![Formatted Point and Line Plot](pictures_sorted/2d_formattedpointandline.png)
 
+- Weird plot:
+    ```bash
     #----WEIRD PLOT-----
     > # pch (1-25) defines different points
     > # lty (1-6) defines different lines
@@ -982,17 +1004,22 @@ and the data in a txt file Use ` for missing values
     > plot(x2, y2, type="b", pch=2, lty=2,
     +      main="My Plot", xlab="x axis", ylab="y axis",
     +      xlim=c(-8,8), ylim=c(-8,8))
+    ```
+    - Output plot:
+    ![Weird Plot](pictures_sorted/2f_weirdplot.png)
 
+- Multiple Plots
+    ```bash
     > #----- Multiple plots-----
     > plot(x2, y2, type="b")
     > # Multiple plots
     > plot(x2, y2, type="b")
-    > 
+    >
     > # Adds straight lines at 2 and 4 coordinates
     > abline(h=c(2,4), col="red",lty=2)
     > # Multiple plots
     > plot(x2, y2, type="b")
-    > 
+    >
     > # Adds straight lines at 2 and 4 coordinates
     > abline(h=c(2,4), col="red",lty=2)
     > 
@@ -1000,22 +1027,33 @@ and the data in a txt file Use ` for missing values
     > # and y points
     > segments(x0=c(2,4), y0=c(2,2), x1=c(2,4), y1=c(4,4),
     +          col="red",lty=2)
-    > 
+    >
     > # Draw an arrow
     > arrows(x0=1.5, y0=4.55, x1=2.7, y1=3.3, col="blue")
     > 
     > # Print Text
     > text(x=1.25, y=4.75, labels="Center")
+    ```
+    - Output plot:
+    ![multiple plot](pictures_sorted/2e_multipleplots.png)
 
+- Load Builtin
+    ```bash
     > # -----Load a built in data.frame-----
     > plot(faithful)
-    > 
+    ```
+    - Output plot:
+    ![Faithful](pictures_sorted\4_loadbuiltin.png)
+
+- Highlight eruptions:
+    ```bash
     > # Highlight eruptions with a waiting time greater than 4
     > eruptions4 = with(faithful, faithful[eruptions > 4,])
-
+    >
     # Draw specific points
     points(eruptions4, col="red", pch=3)
-
+    - Output plot:
+    ![specific points](pictures_sorted\4a_specificloadbuiltin.png)
     ```
 
 
@@ -1124,8 +1162,9 @@ and the data in a txt file Use ` for missing values
 
     # Save the chart
     dev.off()
-
     ```
+    - Output plot:
+    ![2D Pie Chart](pictures_sorted/3a_child_food_pref.png)
 - You have to download a package for 3d pie charts.
 - Go to console and type the following:
 
@@ -1167,7 +1206,8 @@ and the data in a txt file Use ` for missing values
     dev.off()
 
     ```
-
+    - Output plot:
+    ![3D Pie Chart](pictures_sorted/3b_3d_child_food_pref.png)
 ### 30. 1:17:56 Bar Charts 
 
 - Define the bar chart file
@@ -1185,7 +1225,8 @@ and the data in a txt file Use ` for missing values
     dev.off()
 
     ```
-
+    - Output plot:
+    ![Bar Chart](pictures_sorted/3c_food_pref_bar_chart.png)
 ### 31. 1:20:12 Regression Analysis
 
 - Used to study a relationship between 2 separate pieces of data (What is the relation between batting average and RBIS)
@@ -1216,7 +1257,8 @@ and the data in a txt file Use ` for missing values
     dev.off()
 
     ```
-    
+    - Output plot:
+    ![Regression Analysis](pictures_sorted/5_RBI_AVG_Regression.png)
 ### 32. Bonus (Multiple Regression)
 
 - Used to study the impact on one variable from numerous others
