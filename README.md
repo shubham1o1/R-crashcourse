@@ -62,7 +62,8 @@
 - Select the code and click on run. 
 - We haven't specified the path to the data file. When we run the above script a browse window dialogue box appears in our working directory. Here we can specify the file that contains data. After running the script playerrbi_avg.png file is created in the working directory. 
 - following o/p is produced:
-![RBI vs Batting Average](pictures_sorted/1player_rbi_avg.png)
+
+    ![RBI vs Batting Average](pictures_sorted/1player_rbi_avg.png)
 
 ### 4.  09:57 Assignment 
 
@@ -1120,6 +1121,7 @@ and the data in a txt file Use ` for missing values
     [1] 4 4 4 1 1 1 1 1 1
     > 
     ```
+
 ### 28. 1:11:18 Random Numbers
 -  Generating Random samples
 
@@ -1132,6 +1134,7 @@ and the data in a txt file Use ` for missing values
         > sample(1:20,10,replace=T)
         [1] 15 15  8 10  6  9  8  3  3 20
     ```
+
 ### 29. 1:12:18 Pie Charts 
 
 - Follow the code with percentage and item required to form a pie chart: 
@@ -1205,6 +1208,7 @@ and the data in a txt file Use ` for missing values
 - Output plot:
 
     ![3D Pie Chart](pictures_sorted/3b_3d_child_food_pref.png)
+
 ### 30. 1:17:56 Bar Charts 
 
 - Define the bar chart file
@@ -1221,6 +1225,7 @@ and the data in a txt file Use ` for missing values
 - Output plot:
 
     ![Bar Chart](pictures_sorted/3c_food_pref_bar_chart.png)
+
 ### 31. 1:20:12 Regression Analysis
 
 - Used to study a relationship between 2 separate pieces of data (What is the relation between batting average and RBIS)
@@ -1254,6 +1259,7 @@ and the data in a txt file Use ` for missing values
 - Output Plot:
 
     ![Regression Analysis](pictures_sorted/5_RBI_AVG_Regression.png)
+
 ### 32. Bonus (Multiple Regression)
 
 - Used to study the impact on one variable from numerous others
