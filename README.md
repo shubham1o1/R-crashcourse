@@ -1225,7 +1225,7 @@ and the data in a txt file Use ` for missing values
     dev.off()
 
     ```
-    - Output plot:
+- Output plot:
     ![Bar Chart](pictures_sorted/3c_food_pref_bar_chart.png)
 ### 31. 1:20:12 Regression Analysis
 
@@ -1257,7 +1257,7 @@ and the data in a txt file Use ` for missing values
     dev.off()
 
     ```
-    - Output plot:
+- Output plot:
     ![Regression Analysis](pictures_sorted/5_RBI_AVG_Regression.png)
 ### 32. Bonus (Multiple Regression)
 
