@@ -1064,13 +1064,9 @@ and the data in a txt file Use ` for missing values
     ![specific points](pictures_sorted\4a_specificloadbuiltin.png)
     ```
 
-
 ### 27. 1:08:14 Math Functions 
-
 - Some math functions :
-
     ```bash
-
     > sqrt(x=100)
     [1] 10
     > 
@@ -1124,9 +1120,7 @@ and the data in a txt file Use ` for missing values
     [1] 4 4 4 1 1 1 1 1 1
     > 
     ```
-
 ### 28. 1:11:18 Random Numbers
-
 -  Generating Random samples
 
     ```bash
@@ -1138,17 +1132,13 @@ and the data in a txt file Use ` for missing values
         > sample(1:20,10,replace=T)
         [1] 15 15  8 10  6  9  8  3  3 20
     ```
-
-
 ### 29. 1:12:18 Pie Charts 
 
 - Follow the code with percentage and item required to form a pie chart: 
 
     ```r
-
     # List percentages
     foodPref = c(15, 35, 10, 25, 15)
-
     # Labels associated with percentages
     foodLabels = c("Spaghetti", "Pizza", "Mac n' Cheese",
                 "Chicken Nuggets", "Tacos")
@@ -1178,7 +1168,6 @@ and the data in a txt file Use ` for missing values
 - Go to console and type the following:
 
     ```bash
-
     > install.packages("plotrix")
     WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
 
@@ -1198,7 +1187,6 @@ and the data in a txt file Use ` for missing values
 - Code for 3D pie charts:
 
     ```r
-
     # 3D Pie Chart
     # Download package in console install.packages("plotrix")
     # Get the library
@@ -1213,7 +1201,6 @@ and the data in a txt file Use ` for missing values
 
     # Save the chart
     dev.off()
-
     ```
 - Output plot:
 
@@ -1223,17 +1210,13 @@ and the data in a txt file Use ` for missing values
 - Define the bar chart file
 
     ```r
-
     png(file="food_pref_bar_chart.png")
-
     # Plot the chart
     barplot(foodPref, names.arg=foodLabels, xlab="Votes",
             ylab="Food Options", col=colors,
             main="Food Prefs")
-
     # Save File
     dev.off()
-
     ```
 - Output plot:
 
