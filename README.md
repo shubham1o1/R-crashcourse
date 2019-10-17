@@ -962,7 +962,8 @@ and the data in a txt file Use ` for missing values
                         1,2,3,4,5), nrow=5, ncol=5)
     plot(xy1)
     ```
-    - Output plot:
+- Output plot:
+
     ![Point Plot](pictures_sorted/2a_point.png)
 
 - Line Plot:
@@ -972,7 +973,8 @@ and the data in a txt file Use ` for missing values
     > y2 = c(1,2,3,4,5)
     > plot(x2, y2, type="l")
     ```
-    - Output plot:
+- Output plot:
+
     ![Line Plot](pictures_sorted/2b_line.png)
 
 - Points and lines:
@@ -980,7 +982,8 @@ and the data in a txt file Use ` for missing values
     > # Points and lines
     > plot(x2, y2, type="b")
     ```
-    - Output plot:
+- Output plot:
+
     ![Point and Line Plot](pictures_sorted/2c_pointandline.png)
 
 - Point and lines with no space around points. Line is formatted with color
@@ -991,7 +994,8 @@ and the data in a txt file Use ` for missing values
     +      main="My Plot", xlab="x axis", ylab="y axis",
     +      col="steelblue")
     ```
-    - Output plot:
+- Output plot:
+
     ![Formatted Point and Line Plot](pictures_sorted/2d_formattedpointandline.png)
 
 - Weird plot:
@@ -1005,7 +1009,8 @@ and the data in a txt file Use ` for missing values
     +      main="My Plot", xlab="x axis", ylab="y axis",
     +      xlim=c(-8,8), ylim=c(-8,8))
     ```
-    - Output plot:
+- Output plot:
+
     ![Weird Plot](pictures_sorted/2f_weirdplot.png)
 
 - Multiple Plots
@@ -1034,7 +1039,8 @@ and the data in a txt file Use ` for missing values
     > # Print Text
     > text(x=1.25, y=4.75, labels="Center")
     ```
-    - Output plot:
+- Output plot:
+
     ![multiple plot](pictures_sorted/2e_multipleplots.png)
 
 - Load Builtin
@@ -1042,7 +1048,8 @@ and the data in a txt file Use ` for missing values
     > # -----Load a built in data.frame-----
     > plot(faithful)
     ```
-    - Output plot:
+- Output plot:
+
     ![Faithful](pictures_sorted\4_loadbuiltin.png)
 
 - Highlight eruptions:
@@ -1052,7 +1059,8 @@ and the data in a txt file Use ` for missing values
     >
     # Draw specific points
     points(eruptions4, col="red", pch=3)
-    - Output plot:
+- Output plot:
+
     ![specific points](pictures_sorted\4a_specificloadbuiltin.png)
     ```
 
@@ -1163,7 +1171,8 @@ and the data in a txt file Use ` for missing values
     # Save the chart
     dev.off()
     ```
-    - Output plot:
+- Output plot:
+
     ![2D Pie Chart](pictures_sorted/3a_child_food_pref.png)
 - You have to download a package for 3d pie charts.
 - Go to console and type the following:
@@ -1206,7 +1215,8 @@ and the data in a txt file Use ` for missing values
     dev.off()
 
     ```
-    - Output plot:
+- Output plot:
+
     ![3D Pie Chart](pictures_sorted/3b_3d_child_food_pref.png)
 ### 30. 1:17:56 Bar Charts 
 
@@ -1258,6 +1268,8 @@ and the data in a txt file Use ` for missing values
     dev.off()
 
     ```
+- Output Plot:
+
     ![Regression Analysis](pictures_sorted/5_RBI_AVG_Regression.png)
 ### 32. Bonus (Multiple Regression)
 
